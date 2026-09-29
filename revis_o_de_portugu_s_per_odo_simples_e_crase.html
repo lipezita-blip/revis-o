@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PortuGuia - Período Simples & Crase</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+  <!-- Header / Navigation -->
+  <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div class="bg-sky-500 p-2 rounded-lg text-white">
+          <i class="fa-solid fa-graduation-cap text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-wide">PortuGuia</h1>
+          <p class="text-xs text-slate-400">Revisão de Gramática: Período Simples & Crase</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex gap-2 bg-slate-800 p-1 rounded-xl text-sm font-medium">
+        <button id="tab-resumo" onclick="switchTab('resumo')" class="tab-btn px-4 py-2 rounded-lg transition-all bg-sky-600 text-white shadow">
+          <i class="fa-solid fa-book-open mr-2"></i>Resumo Teórico
+        </button>
+        <button id="tab-questoes" onclick="switchTab('questoes')" class="tab-btn px-4 py-2 rounded-lg transition-all text-slate-300 hover:text-white hover:bg-slate-700">
+          <i class="fa-solid fa-pen-to-square mr-2"></i>Questões
+        </button>
+        <button id="tab-desempenho" onclick="switchTab('desempenho')" class="tab-btn px-4 py-2 rounded-lg transition-all text-slate-300 hover:text-white hover:bg-slate-700">
+          <i class="fa-solid fa-chart-pie mr-2"></i>Desempenho
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+
+    <!-- ================= SEÇÃO: RESUMO TEÓRICO ================= -->
+    <section id="section-resumo" class="space-y-8">
+      
+      <!-- Banner de Boas-Vindas -->
+      <div class="bg-gradient-to-r from-sky-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Guia Rápido de Revisão</h2>
+        <p class="text-sky-100 max-w-2xl text-sm sm:text-base">
+          Revise os conceitos fundamentais do **Período Simples** e as regras essenciais da **Crase**. Utilize este material como consulta rápida antes de testar seus conhecimentos no Banco de Questões!
+        </p>
+      </div>
+
+      <!-- Sub-Tabs de Tópicos -->
+      <div class="flex border-b border-slate-200 gap-4 font-semibold text-slate-600">
+        <button id="subtab-periodo" onclick="switchResumoTopic('periodo')" class="subtab-btn pb-3 border-b-2 border-sky-600 text-sky-600 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-diagram-project"></i> Período Simples
+        </button>
+        <button id="subtab-crase" onclick="switchResumoTopic('crase')" class="subtab-btn pb-3 border-b-2 border-transparent hover:text-slate-900 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-font"></i> Regras da Crase
+        </button>
+      </div>
+
+      <!-- CONTEÚDO: PERÍODO SIMPLES -->
+      <div id="content-periodo" class="grid md:grid-cols-2 gap-6">
+        
+        <!-- O que é -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-sky-700">
+            <i class="fa-solid fa-circle-info text-xl"></i>
+            <h3 class="text-lg font-bold">O que é Período Simples?</h3>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            É a frase organizada por **uma única oração** (uma oração absoluta), ou seja, possui apenas **um verbo** ou **uma locução verbal**.
+          </p>
+          <div class="bg-sky-50 border-l-4 border-sky-500 p-3 rounded text-xs text-sky-900 font-mono">
+            Ex: "O professor **explicou** o conteúdo aos alunos com calma." (1 verbo = Período Simples)
+          </div>
+        </div>
+
+        <!-- Termos Essenciais -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-indigo-700">
+            <i class="fa-solid fa-cubes text-xl"></i>
+            <h3 class="text-lg font-bold">Sujeito & Predicado</h3>
+          </div>
+          <ul class="text-slate-600 text-sm space-y-2">
+            <li><strong class="text-slate-800">Sujeito Simples:</strong> 1 único núcleo. (ex: <em>O <u>aluno</u> estudou.</em>)</li>
+            <li><strong class="text-slate-800">Sujeito Composto:</strong> 2 ou mais núcleos. (ex: <em><u>Pedro</u> e <u>Maria</u> estudaram.</em>)</li>
+            <li><strong class="text-slate-800">Oração Sem Sujeito:</strong> Verbos impessoais (fenômenos da natureza, verbo *haver* no sentido de existir, verbo *fazer* indicando tempo decorrido).</li>
+          </ul>
+        </div>
+
+        <!-- Classificação do Predicado -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-emerald-700">
+            <i class="fa-solid fa-tags text-xl"></i>
+            <h3 class="text-lg font-bold">Tipos de Predicado</h3>
+          </div>
+          <div class="text-slate-600 text-sm space-y-2">
+            <p><span class="font-bold text-slate-800">1. Predicado Verbal:</span> Núcleo é um verbo nocional (de ação).<br><span class="text-xs text-slate-500">Ex: Os alunos <u>correram</u> no pátio.</span></p>
+            <p><span class="font-bold text-slate-800">2. Predicado Nominal:</span> Verbo de ligação + Predicativo do Sujeito.<br><span class="text-xs text-slate-500">Ex: O teste estava <u>difícil</u>.</span></p>
+            <p><span class="font-bold text-slate-800">3. Predicado Verbo-Nominal:</span> Verbo de ação + Predicativo.<br><span class="text-xs text-slate-500">Ex: Os alunos saíram da prova <u>confiantes</u>.</span></p>
+          </div>
+        </div>
+
+        <!-- Termos Integrantes e Acessórios -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-amber-700">
+            <i class="fa-solid fa-puzzle-piece text-xl"></i>
+            <h3 class="text-lg font-bold">Complemento vs Adjunto</h3>
+          </div>
+          <ul class="text-slate-600 text-sm space-y-2">
+            <li><strong class="text-slate-800">Objeto Direto / Indireto:</strong> Completa o sentido de verbos transitivos.</li>
+            <li><strong class="text-slate-800">Complemento Nominal:</strong> Completa o sentido de nome (substantivo abstrato, adjetivo, advérbio) e **sempre** vem preposicionado.</li>
+            <li><strong class="text-slate-800">Adjunto Adverbial:</strong> Indica circunstância (tempo, lugar, modo, causa).</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- CONTEÚDO: CRASE -->
+      <div id="content-crase" class="grid md:grid-cols-2 gap-6 hidden">
+        
+        <!-- O que é -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-rose-700">
+            <i class="fa-solid fa-bolt text-xl"></i>
+            <h3 class="text-lg font-bold">O que é Crase?</h3>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            É a fusão da **preposição A** (exigida por um termo regente) com o **artigo definido feminino A(S)** ou pronome demonstrativo (*aquele/aquela/aquilo*).
+          </p>
+          <div class="bg-rose-50 border-l-4 border-rose-500 p-3 rounded text-xs text-rose-900 font-mono">
+            Preposição "a" + Artigo "a" = à
+          </div>
+        </div>
+
+        <!-- Macete Infalível -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-amber-600">
+            <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+            <h3 class="text-lg font-bold">Macetes Infalíveis</h3>
+          </div>
+          <div class="text-slate-600 text-sm space-y-2">
+            <p><strong>1. Troca pelo Masculino:</strong> Substitua a palavra feminina por uma masculina equivalente. Se virar <strong>AO</strong>, leva crase! <br><span class="text-xs text-slate-500">Ex: Vou à praia / Vou ao campo.</span></p>
+            <p><strong>2. Rima de Lugar:</strong> <br><em class="text-indigo-600 font-medium">"Se vou A e volto DA, crase no Á! Se vou A e volto DE, crase pra quê?"</em><br><span class="text-xs text-slate-500">Ex: Vou à Bahia (volto da Bahia) | Vou a Roma (volto de Roma).</span></p>
+          </div>
+        </div>
+
+        <!-- Casos Obrigatórios -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-emerald-700">
+            <i class="fa-solid fa-circle-check text-xl"></i>
+            <h3 class="text-lg font-bold">Casos Obrigatórios</h3>
+          </div>
+          <ul class="text-slate-600 text-sm space-y-1.5 list-disc list-inside">
+            <li>Antes de substantivos femininos exigidos pela regência.</li>
+            <li>Locuções femininas (adverbiais, prepositivas, conjuntivas): <em class="text-slate-800">à noite, às pressas, à medida que, à procura de</em>.</li>
+            <li>Indicação de horas exatas: <em class="text-slate-800">A aula começa às 08h.</em></li>
+            <li>Subentendida a expressão "à moda de": <em class="text-slate-800">Bife à milanesa.</em></li>
+          </ul>
+        </div>
+
+        <!-- Casos Proibidos e Facultativos -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-3 text-red-600">
+            <i class="fa-solid fa-circle-xmark text-xl"></i>
+            <h3 class="text-lg font-bold">Casos Proibidos & Facultativos</h3>
+          </div>
+          <div class="text-slate-600 text-sm space-y-2">
+            <p><strong class="text-red-700">PROIBIDO:</strong> Antes de verbos, palavras masculinas, pronomes pessoais/indefinidos, e palavras repetidas (<em>dia a dia</em>).</p>
+            <p><strong class="text-blue-700">FACULTATIVO:</strong></p>
+            <ul class="list-disc list-inside text-xs space-y-1 text-slate-600 pl-2">
+              <li>Antes de nomes próprios femininos (<em>Refiro-me à/a Maria</em>).</li>
+              <li>Antes de pronomes possessivos femininos no singular (<em>Dirigi-me à/a sua casa</em>).</li>
+              <li>Após a preposição <em>até</em> (<em>Fui até à/a praia</em>).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= SEÇÃO: BANCO DE QUESTÕES ================= -->
+    <section id="section-questoes" class="space-y-6 hidden">
+      
+      <!-- Painel de Filtros -->
+      <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900">Banco de Exercícios</h2>
+          <p class="text-xs text-slate-500">Selecione os filtros abaixo para praticar temas e níveis específicos</p>
+        </div>
+
+        <!-- Filtros de Tópico e Dificuldade -->
+        <div class="flex flex-wrap gap-3 w-full md:w-auto">
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Tópico</label>
+            <select id="filter-topic" onchange="applyFilters()" class="bg-slate-50 border border-slate-300 text-slate-700 text-sm rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-sky-500">
+              <option value="all">Todos os Tópicos</option>
+              <option value="periodo">Período Simples</option>
+              <option value="crase">Crase</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Dificuldade</label>
+            <select id="filter-difficulty" onchange="applyFilters()" class="bg-slate-50 border border-slate-300 text-slate-700 text-sm rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-sky-500">
+              <option value="all">Todas as Dificuldades</option>
+              <option value="facil">Fácil</option>
+              <option value="media">Média</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container das Questões -->
+      <div id="questions-container" class="space-y-6">
+        <!-- As questões serão renderizadas via JavaScript aqui -->
+      </div>
+
+    </section>
+
+    <!-- ================= SEÇÃO: DESEMPENHO ================= -->
+    <section id="section-desempenho" class="space-y-6 hidden">
+      
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+        <div class="flex justify-between items-center border-b pb-4">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Seu Estatístico de Progresso</h2>
+            <p class="text-xs text-slate-500">Acompanhe suas tentativas e percentual de acertos em tempo real</p>
+          </div>
+          <button onclick="resetProgress()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold border border-rose-200 hover:bg-rose-50 px-3 py-1.5 rounded-lg transition-all">
+            <i class="fa-solid fa-rotate-right mr-1"></i> Reiniciar Estatísticas
+          </button>
+        </div>
+
+        <!-- Cards com números gerais -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-center">
+            <p class="text-2xl font-black text-sky-700" id="stat-total">0</p>
+            <p class="text-xs font-medium text-sky-900">Respondidas</p>
+          </div>
+          <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 text-center">
+            <p class="text-2xl font-black text-emerald-700" id="stat-correct">0</p>
+            <p class="text-xs font-medium text-emerald-900">Acertos</p>
+          </div>
+          <div class="bg-rose-50 p-4 rounded-xl border border-rose-100 text-center">
+            <p class="text-2xl font-black text-rose-700" id="stat-wrong">0</p>
+            <p class="text-xs font-medium text-rose-900">Erros</p>
+          </div>
+          <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center">
+            <p class="text-2xl font-black text-indigo-700" id="stat-accuracy">0%</p>
+            <p class="text-xs font-medium text-indigo-900">Precisão</p>
+          </div>
+        </div>
+
+        <!-- Detalhamento por Tópico -->
+        <div class="space-y-4 pt-4">
+          <h3 class="text-sm font-bold text-slate-700">Desempenho por Tópico</h3>
+          
+          <!-- Progresso Período Simples -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-600">Período Simples</span>
+              <span id="topic-periodo-acc" class="text-slate-800">0% (0/0)</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+              <div id="bar-periodo" class="bg-sky-500 h-full w-0 transition-all duration-500"></div>
+            </div>
+          </div>
+
+          <!-- Progresso Crase -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-600">Crase</span>
+              <span id="topic-crase-acc" class="text-slate-800">0% (0/0)</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+              <div id="bar-crase" class="bg-indigo-600 h-full w-0 transition-all duration-500"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+      <p>PortuGuia — Plataforma Interativa de Revisão Gramatical</p>
+      <p class="text-slate-600">Desenvolvido para auxiliar no aprendizado de Período Simples e Regras da Crase.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE FUNCIONALIDADE -->
+  <script>
+    // Banco de Dados de Questões (Fácil e Média)
+    const questions = [
+      // --- PERÍODO SIMPLES (FÁCIL) ---
+      {
+        id: 1,
+        topic: "periodo",
+        difficulty: "facil",
+        question: "Qual das opções abaixo representa um exemplo clássico de Período Simples?",
+        options: [
+          "Os estudantes prepararam o material e foram para a sala de aula.",
+          "A professora explicou a matéria com muita clareza aos alunos.",
+          "Espero que você compreenda o assunto quando o professor explicar.",
+          "Embora estivesse chovendo forte, saímos sem guarda-chuva."
+        ],
+        correct: 1,
+        explanation: "A alternativa B contém apenas **um verbo** ('explicou'), formando uma oração absoluta (Período Simples). As demais opções possuem duas ou mais orações."
+      },
+      {
+        id: 2,
+        topic: "periodo",
+        difficulty: "facil",
+        question: "Na oração 'Choveu muito durante a madrugada inteira', qual é a correta classificação do sujeito?",
+        options: [
+          "Sujeito Simples ('A madrugada')",
+          "Sujeito Indeterminado",
+          "Oração Sem Sujeito (Sujeito Inexistente)",
+          "Sujeito Oculto"
+        ],
+        correct: 2,
+        explanation: "O verbo 'chover' expressa um fenômeno da natureza e está empregado em seu sentido denotativo. Logo, trata-se de um verbo impessoal, configurando uma **Oração Sem Sujeito**."
+      },
+      {
+        id: 3,
+        topic: "periodo",
+        difficulty: "facil",
+        question: "Em 'O professor entregou as notas aos alunos', quais são os complementos verbais presentes?",
+        options: [
+          "Apenas um Objeto Direto ('as notas')",
+          "Apenas um Objeto Indireto ('aos alunos')",
+          "Um Objeto Direto ('as notas') e um Objeto Indireto ('aos alunos')",
+          "Dois Objetos Indiretos"
+        ],
+        correct: 2,
+        explanation: "O verbo 'entregar' é Transitivo Direto e Indireto (VTDI). Quem entrega, entrega algo ('as notas' = Objeto Direto) a alguém ('aos alunos' = Objeto Indireto)."
+      },
+
+      // --- PERÍODO SIMPLES (MÉDIA) ---
+      {
+        id: 4,
+        topic: "periodo",
+        difficulty: "media",
+        question: "Na oração 'A plateia aplaudiu o espetáculo entusiasmada', qual é a classificação do predicado?",
+        options: [
+          "Predicado Nominal",
+          "Predicado Verbal",
+          "Predicado Verbo-Nominal",
+          "Predicado Adverbial"
+        ],
+        correct: 2,
+        explanation: "O predicado apresenta um verbo nocional de ação ('aplaudiu' = núcleo verbal) e um adjetivo que qualifica o sujeito ('entusiasmada' = predicativo do sujeito). Por ter dois núcleos, é **Verbo-Nominal**."
+      },
+      {
+        id: 5,
+        topic: "periodo",
+        difficulty: "media",
+        question: "Assinale a alternativa em que o termo destacado funciona como Complemento Nominal:",
+        options: [
+          "O juiz necessitava de provas concretas.",
+          "Ele manteve o respeito pelas leis do país.",
+          "Os alunos enviaram os relatórios ao diretor.",
+          "Gostamos muito do filme de ontem."
+        ],
+        correct: 1,
+        explanation: "'Pelas leis' completa o sentido do substantivo abstrato 'respeito' (termo passivo que recebe a ação do respeito). Em A, C e D temos complementos verbais (objetos)."
+      },
+      {
+        id: 6,
+        topic: "periodo",
+        difficulty: "media",
+        question: "Assinale a opção em que a expressão em destaque é um Adjunto Adverbial de Causa:",
+        options: [
+          "Chegamos ao teatro muito cedo.",
+          "O garoto tremia de frio.",
+          "O atleta correu com rapidez.",
+          "Fomos viajar com nossos amigos."
+        ],
+        correct: 1,
+        explanation: "'De frio' indica a causa/motivo pelo qual o garoto tremia. 'Muito cedo' é tempo, 'com rapidez' é modo e 'com nossos amigos' é companhia."
+      },
+
+      // --- CRASE (FÁCIL) ---
+      {
+        id: 7,
+        topic: "crase",
+        difficulty: "facil",
+        question: "Assinale a frase em que o uso do sinal indicativo de crase é OBRIGATÓRIO:",
+        options: [
+          "A encomenda foi paga a prazo.",
+          "O motorista virou à esquerda no cruzamento.",
+          "Eles começaram a discutir o novo plano.",
+          "Enviei uma mensagem a ela hoje cedo."
+        ],
+        correct: 1,
+        explanation: "'À esquerda' é uma locução adverbial feminina de lugar, portanto o uso do acento grave é obrigatório. Antes de palavras masculinas ('prazo'), verbos ('discutir') ou pronomes pessoais ('ela'), a crase é proibida."
+      },
+      {
+        id: 8,
+        topic: "crase",
+        difficulty: "facil",
+        question: "O uso da crase é PROIBIDO na opção abaixo:",
+        options: [
+          "O restaurante abre das 12h às 22h.",
+          "Pretendemos ir à praia no fim de semana.",
+          "Ele gosta de caminhar a pé todas as manhãs.",
+          "Fizemos uma bela homenagem à professora."
+        ],
+        correct: 2,
+        explanation: "'Pé' é uma palavra masculina. Não ocorre artigo feminino antes de palavras masculinas, tornando a crase proibida em 'a pé'."
+      },
+      {
+        id: 9,
+        topic: "crase",
+        difficulty: "facil",
+        question: "Qual das frases a seguir apresenta o uso CORRETO da crase indicando horas?",
+        options: [
+          "O evento terá início a uma hora da tarde.",
+          "Chegamos ao cinema exatamente às 20 horas.",
+          "Estava aguardando o ônibus desde ás 14h.",
+          "A reunião está marcada para às 15h."
+        ],
+        correct: 1,
+        explanation: "A indicação de horas exatas exige crase ('às 20 horas'). Em 'desde as 14h' e 'para as 15h', já existem as preposições 'desde' e 'para', não havendo a preposição 'a'."
+      },
+
+      // --- CRASE (MÉDIA) ---
+      {
+        id: 10,
+        topic: "crase",
+        difficulty: "media",
+        question: "Em qual das frases o uso da crase é FACULTATIVO?",
+        options: [
+          "Dirigi-me à médica responsável pelo setor.",
+          "Ela entregou os documentos à sua secretária.",
+          "Todos os estudantes foram à biblioteca.",
+          "O espetáculo começará às nove horas."
+        ],
+        correct: 1,
+        explanation: "Antes de **pronomes possessivos femininos no singular** (como 'sua'), o uso do artigo é facultativo, tornando o emprego da crase opcional (pode ser 'a sua' ou 'à sua')."
+      },
+      {
+        id: 11,
+        topic: "crase",
+        difficulty: "media",
+        question: "Assinale a opção que preenche corretamente as lacunas: 'Vou ___ Roma dos meus sonhos e prestarei homenagem ___ rainha.'",
+        options: [
+          "a - a",
+          "à - à",
+          "à - a",
+          "a - à"
+        ],
+        correct: 1,
+        explanation: "A regra do lugar diz 'Se vou A e volto DE, crase pra quê?'. Porém, quando o nome do lugar vem **especificado** ('Roma dos meus sonhos'), exige-se o artigo, gerando crase ('à Roma'). Em 'prestarei homenagem', o nome exige preposição A + artigo A de 'rainha' = 'à rainha'."
+      },
+      {
+        id: 12,
+        topic: "crase",
+        difficulty: "media",
+        question: "Assinale a alternativa que preenche corretamente as lacunas: '___ medida que o tempo passa, ele fica insensível ___ críticas e disposto ___ mudar.'",
+        options: [
+          "À - a - a",
+          "A - à - à",
+          "À - às - a",
+          "A - a - à"
+        ],
+        correct: 2,
+        explanation: "1) 'À medida que' é locução conjuntiva proporcional feminina (crase obrigatória). 2) 'insensível a' + artigo plural 'as' = 'às críticas'. 3) Antes do verbo 'mudar', a crase é proibida ('disposto a mudar')."
+      }
+    ];
+
+    // Estado da Aplicação
+    let userAnswers = {};
+
+    // Inicialização
+    document.addEventListener("DOMContentLoaded", () => {
+      renderQuestions(questions);
+      updateStats();
+    });
+
+    // Alternar Abas Principais
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-sky-600', 'text-white', 'shadow');
+        btn.classList.add('text-slate-300', 'hover:text-white', 'hover:bg-slate-700');
+      });
+
+      const activeBtn = document.getElementById(`tab-${tabName}`);
+      activeBtn.classList.add('bg-sky-600', 'text-white', 'shadow');
+      activeBtn.classList.remove('text-slate-300', 'hover:text-white', 'hover:bg-slate-700');
+
+      document.getElementById('section-resumo').classList.add('hidden');
+      document.getElementById('section-questoes').classList.add('hidden');
+      document.getElementById('section-desempenho').classList.add('hidden');
+
+      document.getElementById(`section-${tabName}`).classList.remove('hidden');
+    }
+
+    // Alternar Tópicos no Resumo
+    function switchResumoTopic(topic) {
+      const subtabPeriodo = document.getElementById('subtab-periodo');
+      const subtabCrase = document.getElementById('subtab-crase');
+      const contentPeriodo = document.getElementById('content-periodo');
+      const contentCrase = document.getElementById('content-crase');
+
+      if (topic === 'periodo') {
+        subtabPeriodo.className = "subtab-btn pb-3 border-b-2 border-sky-600 text-sky-600 transition-all flex items-center gap-2 font-semibold";
+        subtabCrase.className = "subtab-btn pb-3 border-b-2 border-transparent hover:text-slate-900 transition-all flex items-center gap-2 font-semibold text-slate-500";
+        contentPeriodo.classList.remove('hidden');
+        contentCrase.classList.add('hidden');
+      } else {
+        subtabCrase.className = "subtab-btn pb-3 border-b-2 border-rose-600 text-rose-600 transition-all flex items-center gap-2 font-semibold";
+        subtabPeriodo.className = "subtab-btn pb-3 border-b-2 border-transparent hover:text-slate-900 transition-all flex items-center gap-2 font-semibold text-slate-500";
+        contentCrase.classList.remove('hidden');
+        contentPeriodo.classList.add('hidden');
+      }
+    }
+
+    // Renderizar Lista de Questões
+    function renderQuestions(list) {
+      const container = document.getElementById('questions-container');
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white p-8 rounded-2xl border text-center text-slate-500">
+            <i class="fa-solid fa-filter-circle-xmark text-3xl mb-2 text-slate-400"></i>
+            <p>Nenhuma questão encontrada para os filtros selecionados.</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach((q, idx) => {
+        const isAnswered = userAnswers[q.id] !== undefined;
+        const selectedOpt = userAnswers[q.id];
+
+        const topicBadge = q.topic === 'periodo' 
+          ? `<span class="bg-sky-100 text-sky-800 text-xs px-2.5 py-1 rounded-full font-semibold"><i class="fa-solid fa-diagram-project mr-1"></i>Período Simples</span>`
+          : `<span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-semibold"><i class="fa-solid fa-font mr-1"></i>Crase</span>`;
+
+        const diffBadge = q.difficulty === 'facil'
+          ? `<span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-semibold">Fácil</span>`
+          : `<span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-semibold">Média</span>`;
+
+        let cardHTML = `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex justify-between items-center flex-wrap gap-2">
+              <div class="flex gap-2">
+                ${topicBadge}
+                ${diffBadge}
+              </div>
+              <span class="text-xs font-bold text-slate-400">Questão #${q.id}</span>
+            </div>
+
+            <h3 class="text-base font-bold text-slate-800">${q.question}</h3>
+
+            <div class="space-y-2">
+        `;
+
+        q.options.forEach((opt, optIdx) => {
+          let btnClass = "w-full text-left p-3.5 rounded-xl text-sm border border-slate-200 hover:border-sky-400 hover:bg-sky-50/50 transition-all flex items-start gap-3 text-slate-700";
+          let iconHTML = `<span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs font-bold shrink-0 text-slate-500">${String.fromCharCode(65 + optIdx)}</span>`;
+
+          if (isAnswered) {
+            if (optIdx === q.correct) {
+              btnClass = "w-full text-left p-3.5 rounded-xl text-sm border-2 border-emerald-500 bg-emerald-50 text-emerald-900 font-medium flex items-start gap-3";
+              iconHTML = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shrink-0"><i class="fa-solid fa-check"></i></span>`;
+            } else if (optIdx === selectedOpt) {
+              btnClass = "w-full text-left p-3.5 rounded-xl text-sm border-2 border-rose-500 bg-rose-50 text-rose-900 font-medium flex items-start gap-3";
+              iconHTML = `<span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
+            } else {
+              btnClass = "w-full text-left p-3.5 rounded-xl text-sm border border-slate-200 opacity-50 text-slate-600 flex items-start gap-3";
+            }
+          }
+
+          cardHTML += `
+            <button ${isAnswered ? 'disabled' : ''} onclick="selectAnswer(${q.id}, ${optIdx})" class="${btnClass}">
+              ${iconHTML}
+              <span>${opt}</span>
+            </button>
+          `;
+        });
+
+        cardHTML += `</div>`;
+
+        // Se a questão já foi respondida, exibe a explicação
+        if (isAnswered) {
+          const isCorrect = selectedOpt === q.correct;
+          const feedbackHeader = isCorrect 
+            ? `<div class="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-1"><i class="fa-solid fa-circle-check"></i> Resposta Correta!</div>`
+            : `<div class="flex items-center gap-2 text-rose-700 font-bold text-sm mb-1"><i class="fa-solid fa-circle-xmark"></i> Resposta Incorreta!</div>`;
+
+          cardHTML += `
+            <div class="mt-4 p-4 rounded-xl ${isCorrect ? 'bg-emerald-50/70 border border-emerald-200' : 'bg-rose-50/70 border border-rose-200'} space-y-1">
+              ${feedbackHeader}
+              <p class="text-xs text-slate-700 leading-relaxed">${q.explanation}</p>
+            </div>
+          `;
+        }
+
+        cardHTML += `</div>`;
+        container.innerHTML += cardHTML;
+      });
+    }
+
+    // Seleção de Resposta
+    function selectAnswer(questionId, selectedOpt) {
+      userAnswers[questionId] = selectedOpt;
+      applyFilters(); // Re-renderiza para atualizar layout com feedback
+      updateStats();
+    }
+
+    // Filtrar Questões
+    function applyFilters() {
+      const topic = document.getElementById('filter-topic').value;
+      const difficulty = document.getElementById('filter-difficulty').value;
+
+      const filtered = questions.filter(q => {
+        const matchTopic = (topic === 'all' || q.topic === topic);
+        const matchDiff = (difficulty === 'all' || q.difficulty === difficulty);
+        return matchTopic && matchDiff;
+      });
+
+      renderQuestions(filtered);
+    }
+
+    // Atualizar Painel Estatístico
+    function updateStats() {
+      const totalAnswered = Object.keys(userAnswers).length;
+      let correctCount = 0;
+
+      let periodoTotal = 0;
+      let periodoCorrect = 0;
+      let craseTotal = 0;
+      let craseCorrect = 0;
+
+      questions.forEach(q => {
+        if (userAnswers[q.id] !== undefined) {
+          const isRight = userAnswers[q.id] === q.correct;
+          if (isRight) correctCount++;
+
+          if (q.topic === 'periodo') {
+            periodoTotal++;
+            if (isRight) periodoCorrect++;
+          } else if (q.topic === 'crase') {
+            craseTotal++;
+            if (isRight) craseCorrect++;
+          }
+        }
+      });
+
+      const wrongCount = totalAnswered - correctCount;
+      const accuracy = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+
+      document.getElementById('stat-total').innerText = totalAnswered;
+      document.getElementById('stat-correct').innerText = correctCount;
+      document.getElementById('stat-wrong').innerText = wrongCount;
+      document.getElementById('stat-accuracy').innerText = `${accuracy}%`;
+
+      // Barra Período
+      const periodoAcc = periodoTotal > 0 ? Math.round((periodoCorrect / periodoTotal) * 100) : 0;
+      document.getElementById('topic-periodo-acc').innerText = `${periodoAcc}% (${periodoCorrect}/${periodoTotal})`;
+      document.getElementById('bar-periodo').style.width = `${periodoAcc}%`;
+
+      // Barra Crase
+      const craseAcc = craseTotal > 0 ? Math.round((craseCorrect / craseTotal) * 100) : 0;
+      document.getElementById('topic-crase-acc').innerText = `${craseAcc}% (${craseCorrect}/${craseTotal})`;
+      document.getElementById('bar-crase').style.width = `${craseAcc}%`;
+    }
+
+    // Resetar Progresso
+    function resetProgress() {
+      if (confirm("Tem certeza que deseja reiniciar suas estatísticas e respostas?")) {
+        userAnswers = {};
+        applyFilters();
+        updateStats();
+      }
+    }
+  </script>
+</body>
+</html>
